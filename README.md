@@ -1,10 +1,13 @@
 # Discription
 GSMTracker is a library with use SIM808 module to send GPS data to the web server.      
-This library using STM32_HAL_UART library. You should first add STM32_HAL_UART for your STM32 family to your project.         
+This Library using STM32_HAL_UART library. You should first add STM32_HAL_UART for your STM32 family to your project.       
+This Library also supports UART DMA.
 
-### UART Library for each STM32 family:
+### This Library supports:
 
-| STM32         | Library              |
+#### MCU:
+
+| STM32         | Required Library     |
 | ------------- |:--------------------:|
 | STM32F0xx     | stm32f0xx_hal_uart.h |
 | STM32F1xx     | stm32f1xx_hal_uart.h |
@@ -20,5 +23,13 @@ This library using STM32_HAL_UART library. You should first add STM32_HAL_UART f
 | STM32L4xx     | stm32l4xx_hal_uart.h |
 | STM32L5xx     | stm32l5xx_hal_uart.h |
 
----
+#### GSM Module:
+- SIM808
 
+## Setup:
+- Enable UART (Enable DMA if you want).
+- Enable a gpio as output and open drain to connect gsm power button.
+- Add GSMTracker and UART library to your project.
+- Configure `GSMTracker_Config.h' file.
+- Call `SetPower()`.
+- Call `SendCoordinates()` in infinit loop.
